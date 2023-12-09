@@ -3,7 +3,18 @@ function findAccountById(accounts, id) {
 }
 
 function sortAccountsByLastName(accounts) {
-  return accounts.sort((a, b) => a.name.last.toLowerCase().localeCompare(b.name.last.toLowerCase()));
+  return accounts.sort((accountA, accountB) => {
+      const lastNameA = accountA.name.last.toLowerCase();
+      const lastNameB = accountB.name.last.toLowerCase();
+
+      if (lastNameA < lastNameB) {
+          return -1;
+      }
+      if (lastNameA > lastNameB) {
+          return 1;
+      }
+      return 0;
+  });
 }
 
 function getAccountFullNames(accounts) {
